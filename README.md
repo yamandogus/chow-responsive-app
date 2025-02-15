@@ -34,3 +34,44 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+chow-responsive-app/
+│
+├── public/
+│   ├── images/
+│   └── icons/
+│
+├── src/
+│   ├── app/
+│   │   ├── components/
+│   │   │   ├── Navbar.tsx
+│   │   │   ├── Footer.tsx
+│   │   │   ├── Card.tsx
+│   │   │   └── Button.tsx
+│   │   │
+│   │   ├── pages/
+│   │   │   ├── index.tsx
+│   │   │   ├── menu/
+│   │   │   │   ├── index.tsx
+│   │   │   │   └── [category].tsx   # Dynamic route for categories
+│   │   │   ├── restaurants/
+│   │   │   │   ├── index.tsx
+│   │   │   │   └── [id].tsx         # Dynamic route for restaurant details
+│   │   │   ├── about.tsx
+│   │   │   └── contact.tsx
+│   │   │
+│   │   ├── styles/
+│   │   │   ├── globals.css
+│   │   │   ├── Navbar.module.css
+│   │   │   └── Footer.module.css
+│   │   │
+│   │   ├── store/
+│   │   │   └── store.ts
+│   │   │
+│   │   ├── utils/
+│   │   └── hooks/
+│   │
+│   └── app.tsx
+│
+├── package.json
+└── tsconfig.json
