@@ -1,11 +1,12 @@
 import { Button } from '@nextui-org/react'
+import Image from 'next/image'
 import React from 'react'
 
 const HeroSection = () => {
   return (
     <div className="container mx-auto flex-grow">
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 bg-[#068C52] rounded">
-      <div className="flex-col items-center justify-start py-6">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 py-16 px-4 bg-[#068C52] rounded">
+      <div className="flex flex-col items-start justify-start py-6 gap-4">
         <p className="xs:text-xl md:text-6xl text-white font-bold text-wrap">
           Tasty Meals <br />
           made for You
@@ -13,7 +14,7 @@ const HeroSection = () => {
         <p className="text-gray-200">
           Amet minim mollit non deserunt ullamco est sit aliqua dolor do
           amet sint. Velit officia consequat duis enim velit mollit.
-          Exercitation veniam consequat sunt nostrud amet.
+          Exercitation veniam consequat sunt nostrud amet. 
         </p>
         <Button
           className="mt-4 bg-[#00F076] text-white px-8 font-bold rounded-[20px]"
@@ -25,18 +26,22 @@ const HeroSection = () => {
       <div className="flex-col items-center justify-center">
         <div className="flex gap-20 items-center justify-center">
           <div>
-            <img src="/Ellipse 81.png" alt="" />
+            <Image src="/Ellipse 81.png"  width={100}
+              height={100} alt="" />
           </div>
           <div>
-            <img src="/Ellipse 77.png" alt="" />
+            <Image  src="/Ellipse 77.png"  width={250}
+              height={250} alt="" />
           </div>
         </div>
         <div className="flex gap-20 items-center justify-center">
           <div>
-            <img src="/Ellipse 90.png" alt="" />
+            <Image  src="/Ellipse 90.png"  width={200}
+              height={200} alt="" />
           </div>
           <div>
-            <img src="/Ellipse 95.png" alt="" />
+            <Image src="/Ellipse 95.png"  width={250}
+              height={250} alt="" />
           </div>
         </div>
       </div>

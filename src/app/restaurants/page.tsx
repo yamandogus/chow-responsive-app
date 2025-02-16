@@ -1,3 +1,4 @@
-import { Restaurants } from "@/app/pages/restaurants/restaurants";
+import Restaurants from "../pages/restaurants/restaurants";
+
 
 export default Restaurants;

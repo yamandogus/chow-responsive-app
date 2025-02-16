@@ -1,3 +1,4 @@
-import { About } from "@/app/pages/about/about";
+import AboutPage from "../pages/about/about";
 
-export default About;
+
+export default AboutPage;

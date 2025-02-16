@@ -1,5 +1,5 @@
-import { increment } from "@/app/store/counterSlice";
-import { Button, Card, CardBody, CardHeader, Link } from "@nextui-org/react";
+import { addToCart } from "@/app/store/cartSlice";
+import { Button, Card, CardBody, CardHeader, Image, Link } from "@nextui-org/react";
 import React from "react";
 import { useDispatch } from "react-redux";
 const categories = [
@@ -69,17 +69,21 @@ const Category = () => {
   return (
     <div className="bg-[#c9ffbf] py-4 px-4">
       <div className="container mx-auto">
-        <div className="flex align-center justify-between gap-4">
-          <h4 className="text-3xl font-bold">Simple Meals for You</h4>
-          <div className="flex gap-4">
-            {categories.map((category) => (
-              <Button
-                key={category}
-                className="bg-transparent text-custom border border-custom w-24 font-bold rounded-[20px] py-1"
-              >
-                {category}
-              </Button>
-            ))}
+        <div className="flex align-center justify-between">
+          <div className="grid grid-cols-1 md:grid-cols-2">
+            <div>
+              <h4 className="text-3xl font-bold">Simple Meals for You</h4>
+            </div>
+            <div className="flex gap-2 flex-wrap">
+              {categories.map((category) => (
+                <Button
+                  key={category}
+                  className="bg-transparent text-custom border border-custom w-24 font-bold rounded-[20px] py-1"
+                >
+                  {category}
+                </Button>
+              ))}
+            </div>
           </div>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-16 z-5">
@@ -93,8 +97,9 @@ const Category = () => {
                   <Button className="bg-[#00F076] rounded-full">
                     <i className="fa-solid fa-star"> {" " + item.rating}</i>
                   </Button>
-                  <img
+                  <Image
                     width={250}
+                    height={250}
                     className="absolute top-[-70px] -right-6 z-10"
                     src={item.image}
                     alt={item.name}
@@ -110,7 +115,15 @@ const Category = () => {
                     <Button
                       className="bg-[#00F076] rounded-full z-20 relative"
                       onPress={() => {
-                        dispatch(increment());
+                        dispatch(addToCart({
+                          ...item,
+                          id: item.id,
+                          name: item.name,
+                          price: item.price,
+                          rating: item.rating,
+                          image: item.image,
+                          quantity: 1,
+                        }));
                       }}
                     >
                       Add to Cart

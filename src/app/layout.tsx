@@ -6,7 +6,7 @@ import { Provider } from "react-redux";
 import { NextUIProvider } from "@nextui-org/react";
 import Navbar from "./components/Navbar";
 import { Footer } from "./components/Footer";
-import store from "./store/store";
+import { store } from "./store/store";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",

@@ -1,3 +1,4 @@
-import { Menu } from "@/app/pages/menu/menu";
+import Menu from "../pages/menu/menu";
+
 
 export default Menu;

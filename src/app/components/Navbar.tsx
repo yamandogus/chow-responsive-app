@@ -7,12 +7,10 @@ import {
   Button,
   useDisclosure,
   Drawer,
-  DrawerContent,
-  DrawerHeader,
-  DrawerBody,
 } from "@nextui-org/react";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../store/reducers";
+import { useSelector } from "react-redux";
+import BasketBody from "../pages/home/components/Drawer";
+import { RootState } from "../store/store";
 
 export const AcmeLogo = () => {
   return (
@@ -29,10 +27,10 @@ export const AcmeLogo = () => {
 
 export default function Navbar() {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const count = useSelector((state: RootState) => state.counter.count);
-  const dispatch = useDispatch();
+  const totalQuantity = useSelector((state: RootState) => state.cart.totalQuantity);
+  const cart = useSelector((state: RootState) => state.cart);
 
-  const handleOpen = (prev: boolean) => {
+  const handleOpen = () => {
     onOpen();
   };
   return (
@@ -83,7 +81,7 @@ export default function Navbar() {
             color="success"
             variant="flat"
             onPress={() => {
-              handleOpen(true);
+              handleOpen();
             }}
             size="sm"
             isIconOnly
@@ -92,23 +90,15 @@ export default function Navbar() {
             <p
               className="absolute top-1 right-1 text-xs bg-red-500 text-white rounded-full w-3 h-3 flex items-center justify-center z-50"
             >
-              {count}
+              {totalQuantity}
             </p>
           </Button>
           <Drawer
             isOpen={isOpen}
-            onOpenChange={handleOpen}
             onClose={onClose}
             placement="right"
           >
-            <DrawerContent>
-              <DrawerHeader>
-                <h2>Drawer Title</h2>
-              </DrawerHeader>
-              <DrawerBody>
-                <p>Drawer Body</p>
-              </DrawerBody>
-            </DrawerContent>
+            <BasketBody items={cart.items} onClose={onClose} />
           </Drawer>
         </NavbarItem>
       </NavbarContent>
