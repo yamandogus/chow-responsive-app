@@ -1,66 +1,68 @@
 import { addToCart } from "@/app/store/cartSlice";
-import { Button, Card, CardBody, CardHeader, Image, Link } from "@nextui-org/react";
+import { Button, Card, CardBody, CardHeader, Link } from "@nextui-org/react";
+import Image from "next/image";
 import React from "react";
 import { useDispatch } from "react-redux";
+
 const categories = [
-  "All",
-  "Breakfast",
-  "Lunch",
-  "Dinner",
-  "Desserts",
-  "Beverage",
+  "Tümü",
+  "Kahvaltı",
+  "Öğle",
+  "Akşam",
+  "Tatlılar",
+  "İçecekler",
 ];
 
 interface FoodItem {
   id: number;
   name: string;
-  price: number;
   rating: number;
   image: string;
+  price: number;
 }
 
 const foodItems: FoodItem[] = [
   {
     id: 1,
     name: "Spaghetti Meatballs",
-    price: 10,
     rating: 4.5,
     image: "/category.png",
+    price: 180,
   },
   {
     id: 2,
     name: "Bagel Breakfast",
-    price: 10,
     rating: 4.5,
     image: "/category.png",
+    price: 120,
   },
   {
     id: 3,
     name: "Full English Breakfast",
-    price: 10,
     rating: 4.5,
     image: "/category.png",
+    price: 450,
   },
   {
     id: 4,
     name: "Italian Meatballs",
-    price: 10,
     rating: 4.5,
     image: "/category.png",
+    price: 220,
   },
   {
     id: 5,
     name: "Iced Coffee",
-    price: 10,
     rating: 4.5,
     image: "/category.png",
+    price: 85,
   },
   {
     id: 6,
     name: "American Breakfast",
-    price: 10,
     rating: 4.5,
     image: "/category.png",
+    price: 380,
   },
 ];
 
@@ -72,7 +74,7 @@ const Category = () => {
         <div className="flex align-center justify-between">
           <div className="grid grid-cols-1 md:grid-cols-2">
             <div>
-              <h4 className="text-3xl font-bold">Simple Meals for You</h4>
+              <h4 className="text-3xl font-bold">Sizin için Basit Yemekler</h4>
             </div>
             <div className="flex gap-2 flex-wrap">
               {categories.map((category) => (
@@ -100,9 +102,10 @@ const Category = () => {
                   <Image
                     width={250}
                     height={250}
-                    className="absolute top-[-70px] -right-6 z-10"
+                    className="absolute top-[-70px] -right-6 z-10 object-contain"
                     src={item.image}
                     alt={item.name}
+                    priority
                   />
                 </div>
               </CardHeader>
@@ -110,7 +113,7 @@ const Category = () => {
               <CardBody className="absolute bottom-0 gap-4">
                 <h4 className="text-md font-bold">{item.name}</h4>
                 <div className="flex align-center justify-between w-full">
-                  <span className="text-lg font-bold">${item.price}</span>
+                  <span className="text-lg font-bold">{item.price} ₺</span>
                   <div>
                     <Button
                       className="bg-[#00F076] rounded-full z-20 relative"
@@ -126,7 +129,7 @@ const Category = () => {
                         }));
                       }}
                     >
-                      Add to Cart
+                      Sepete Ekle
                     </Button>
                   </div>
                 </div>
@@ -138,11 +141,11 @@ const Category = () => {
       <div className="flex align-center justify-center my-16">
         <Button
           className="bg-[#068C52] text-white font-bold rounded-full"
-          content="Explore Menu"
+          content="Menüyü Keşfet"
           href="/menu"
           as={Link}
         >
-          Explore Menu
+          Menüyü Keşfet
         </Button>
       </div>
     </div>

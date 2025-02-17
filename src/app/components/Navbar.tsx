@@ -97,6 +97,7 @@ export default function Navbar() {
             isOpen={isOpen}
             onClose={onClose}
             placement="right"
+            size="lg"
           >
             <BasketBody items={cart.items} onClose={onClose} />
           </Drawer>

@@ -7,20 +7,20 @@ const HeroSection = () => {
     <div className="container mx-auto flex-grow">
     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 py-16 px-4 bg-[#068C52] rounded">
       <div className="flex flex-col items-start justify-start py-6 gap-4">
-        <p className="xs:text-xl md:text-6xl text-white font-bold text-wrap">
-          Tasty Meals <br />
-          made for You
+        <p className="sm:text-4xl md:text-6xl text-white font-bold text-wrap">
+          Sizin için 
+          Lezzetli Yemekler
         </p>
         <p className="text-gray-200">
-          Amet minim mollit non deserunt ullamco est sit aliqua dolor do
-          amet sint. Velit officia consequat duis enim velit mollit.
-          Exercitation veniam consequat sunt nostrud amet. 
+          En lezzetli yemekler, en taze malzemeler ve en iyi servis ile sizlere
+          hizmet veriyoruz. Özenle hazırlanan menümüzde damak tadınıza uygun
+          birçok seçenek bulabilirsiniz.
         </p>
         <Button
           className="mt-4 bg-[#00F076] text-white px-8 font-bold rounded-[20px]"
           variant="flat"
         >
-          View Menu 🍲
+          Menüyü Gör 🍲
         </Button>
       </div>
       <div className="flex-col items-center justify-center">
@@ -50,19 +50,19 @@ const HeroSection = () => {
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         <div className="flex flex-col items-center justify-center">
           <h4 className="text-3xl font-bold text-custom">100%</h4>
-          <p className="text-gray-600">User satisfaction</p>
+          <p className="text-gray-600">Müşteri memnuniyeti</p>
         </div>
         <div className="flex flex-col items-center justify-center">
           <h4 className="text-3xl font-bold text-custom">150+</h4>
-          <p className="text-gray-600">Restaurants</p>
+          <p className="text-gray-600">Restoran</p>
         </div>
         <div className="flex flex-col items-center justify-center">
           <h4 className="text-3xl font-bold text-custom">24/7</h4>
-          <p className="text-gray-600">Customer support</p>
+          <p className="text-gray-600">Müşteri desteği</p>
         </div>
         <div className="flex flex-col items-center justify-center">
           <h4 className="text-3xl font-bold text-custom">250K</h4>
-          <p className="text-gray-600">Users served</p>
+          <p className="text-gray-600">Mutlu müşteri</p>
         </div>
       </div>
     </div>

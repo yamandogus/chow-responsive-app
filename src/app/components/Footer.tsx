@@ -22,7 +22,7 @@ export const Footer = () => {
             <h3 className="text-lg font-bold mb-4">İletişim</h3>
             <ul className="space-y-2 text-gray-600">
               <li>Email: info@chow.com</li>
-              <li>Tel: +90 555 123 4567</li>
+              <li>Tel: +9111111111111</li>
               <li>Adres: İstanbul, Türkiye</li>
             </ul>
           </div>

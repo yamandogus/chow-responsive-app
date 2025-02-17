@@ -11,92 +11,92 @@ interface CommentData{
 export const dummyData: CommentData[] = [
     {
       id: 1,
-      name: "Emma Thompson",
+      name: "Ayşe Yılmaz",
       avatar: "https://randomuser.me/api/portraits/women/1.jpg",
-      date: "Feb 15, 2024",
-      readTime: "5 min read",
+      date: "15 Şub 2024",
+      readTime: "5 dk okuma",
       rating: 4.5,
-      content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore."
+      content: "Yemekler çok lezzetliydi. Özellikle köfteli spagetti muhteşemdi. Servis hızlı ve personel çok ilgiliydi."
     },
     {
       id: 2,
-      name: "James Wilson",
+      name: "Mehmet Demir",
       avatar: "https://randomuser.me/api/portraits/men/2.jpg",
-      date: "Feb 14, 2024",
-      readTime: "3 min read",
+      date: "14 Şub 2024",
+      readTime: "3 dk okuma",
       rating: 5.0,
-      content: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo."
+      content: "Kahvaltı menüsü çok zengin ve taze. Özellikle simit kahvaltısı favorim oldu. Kesinlikle tavsiye ederim."
     },
     {
       id: 3,
-      name: "Sophia Chen",
+      name: "Zeynep Kaya",
       avatar: "https://randomuser.me/api/portraits/women/3.jpg",
-      date: "Feb 13, 2024",
-      readTime: "7 min read",
+      date: "13 Şub 2024",
+      readTime: "7 dk okuma",
       rating: 4.0,
-      content: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla."
+      content: "Serpme kahvaltı için gittik ve çok memnun kaldık. Her şey tazeydi ve lezzetliydi. Tekrar geleceğiz."
     },
     {
       id: 4,
-      name: "Michael Brown",
+      name: "Ahmet Şahin",
       avatar: "https://randomuser.me/api/portraits/men/4.jpg",
-      date: "Feb 12, 2024",
-      readTime: "4 min read",
+      date: "12 Şub 2024",
+      readTime: "4 dk okuma",
       rating: 4.8,
-      content: "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit."
+      content: "İtalyan köfte gerçekten harika! Soslar ev yapımı ve çok lezzetli. Personel çok nazik ve ilgili."
     },
     {
       id: 5,
-      name: "Isabella Martinez",
+      name: "Elif Öztürk",
       avatar: "https://randomuser.me/api/portraits/women/5.jpg",
-      date: "Feb 11, 2024",
-      readTime: "6 min read",
+      date: "11 Şub 2024",
+      readTime: "6 dk okuma",
       rating: 4.2,
-      content: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium."
+      content: "Soğuk kahve çok güzel hazırlanmış. Tatlılar da bir harika. Ambiyans çok rahat ve ferah."
     },
     {
       id: 6,
-      name: "Alexander Lee",
+      name: "Mustafa Çelik",
       avatar: "https://randomuser.me/api/portraits/men/6.jpg",
-      date: "Feb 10, 2024",
-      readTime: "8 min read",
+      date: "10 Şub 2024",
+      readTime: "8 dk okuma",
       rating: 4.7,
-      content: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur."
+      content: "Türk kahvaltısı tam anlamıyla mükemmel! Özellikle menemen ve gözleme favorilerim oldu."
     },
     {
       id: 7,
-      name: "Olivia Taylor",
+      name: "Selin Arslan",
       avatar: "https://randomuser.me/api/portraits/women/7.jpg",
-      date: "Feb 9, 2024",
-      readTime: "5 min read",
+      date: "9 Şub 2024",
+      readTime: "5 dk okuma",
       rating: 4.4,
-      content: "Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit."
+      content: "Fiyat/performans açısından çok iyi. Porsiyonlar doyurucu ve lezzetli. Kesinlikle tavsiye ederim."
     },
     {
       id: 8,
-      name: "William Garcia",
+      name: "Can Yıldız",
       avatar: "https://randomuser.me/api/portraits/men/8.jpg",
-      date: "Feb 8, 2024",
-      readTime: "4 min read",
+      date: "8 Şub 2024",
+      readTime: "4 dk okuma",
       rating: 4.9,
-      content: "Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae."
+      content: "Hızlı servis ve kaliteli yemekler. Öğle yemeği için ideal bir mekan. Tekrar geleceğim."
     },
     {
       id: 9,
-      name: "Ava Anderson",
+      name: "Deniz Aydın",
       avatar: "https://randomuser.me/api/portraits/women/9.jpg",
-      date: "Feb 7, 2024",
-      readTime: "6 min read",
+      date: "7 Şub 2024",
+      readTime: "6 dk okuma",
       rating: 4.3,
-      content: "Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore."
+      content: "Kahve çeşitleri çok güzel. Özellikle tatlılarla beraber harika gidiyor. Personel çok ilgili."
     },
     {
       id: 10,
-      name: "Daniel Kim",
+      name: "Burak Koç",
       avatar: "https://randomuser.me/api/portraits/men/10.jpg",
-      date: "Feb 6, 2024",
-      readTime: "7 min read",
+      date: "6 Şub 2024",
+      readTime: "7 dk okuma",
       rating: 4.6,
-      content: "Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet."
+      content: "Akşam yemeği için gittik ve çok memnun kaldık. Atmosfer çok güzel, yemekler lezzetli."
     }
   ];

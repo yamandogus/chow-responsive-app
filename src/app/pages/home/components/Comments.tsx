@@ -12,7 +12,7 @@ const Comments = () => {
     <div className="container mx-auto my-16">
       <div className="flex flex-row items-center justify-between">
         <p className="text-3xl font-bold">
-          What our customers are <br /> saying
+          Müşterilerimiz neler söylüyor
         </p>
         <div className="flex flex-row items-center justify-end gap-4">
           <Button className="bg-[#00F076] text-black rounded-[20px] prev-button">

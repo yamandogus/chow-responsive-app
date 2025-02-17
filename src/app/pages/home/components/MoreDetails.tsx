@@ -8,15 +8,14 @@ const MoreDetails = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Sol Kısım */}
           <div className="flex flex-col items-start justify-center space-y-6">
-            <p className="text-3xl font-bold">Meals on the Go!!!</p>
+            <p className="text-3xl font-bold">Yemekler Yanınızda!!!</p>
             <p className="text-gray-700">
-              Download the app to enjoy discounts, promotions and offers.
-              Amet minim mollit non deserunt ullamco est sit aliqua dolor do
-              amet sint velit officia consequat duis enim velit mollit
-              exercitation veniam.
+              Uygulamayı indirerek indirimlerden, promosyonlardan ve fırsatlardan
+              yararlanın. En lezzetli yemekler artık cebinizde. Hemen indirin
+              ve sipariş vermeye başlayın.
             </p>
             <div className="flex flex-col gap-4">
-              <p className="font-medium">Get the app</p>
+              <p className="font-medium">Uygulamayı İndir</p>
               <div className="flex gap-4">
                 <Image 
                   src="/Google Play Badge.png" 
