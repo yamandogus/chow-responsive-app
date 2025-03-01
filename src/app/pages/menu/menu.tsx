@@ -56,7 +56,7 @@ export default function Menu() {
         {filteredItems.map((item) => (
           <Card
             key={item.id}
-            className="hover:shadow-lg transition-all duration-200 hover:-translate-y-1"
+            className="hover:shadow-lg transition-all duration-200 hover:-translate-y-1 ease-in-out"
             isPressable
           >
             <CardBody className="p-0 overflow-hidden">
@@ -65,7 +65,7 @@ export default function Menu() {
                   src={item.image}
                   alt={item.name}
                   fill
-                  className="object-cover transition-transform duration-300 hover:scale-105"
+                  className="object-cover"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   quality={85}
                 />

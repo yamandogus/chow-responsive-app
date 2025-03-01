@@ -7,6 +7,7 @@ import { NextUIProvider } from "@nextui-org/react";
 import Navbar from "./components/Navbar";
 import { Footer } from "./components/Footer";
 import { store } from "./store/store";
+import { SessionProvider } from "next-auth/react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,6 +25,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
+    <SessionProvider>
     <html lang="en">
       <head>
         <link
@@ -43,5 +45,6 @@ export default function RootLayout({
         </Provider>
       </body>
     </html>
+    </SessionProvider>
   );
 }

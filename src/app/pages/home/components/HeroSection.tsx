@@ -5,7 +5,7 @@ import React from 'react'
 const HeroSection = () => {
   return (
     <div className="container mx-auto flex-grow">
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 py-16 px-4 bg-[#068C52] rounded">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 py-16 px-4 bg-[#068C52] rounded-2xl">
       <div className="flex flex-col items-start justify-start py-6 gap-4">
         <p className="sm:text-4xl md:text-6xl text-white font-bold text-wrap">
           Sizin için 

@@ -10,69 +10,45 @@ import {
   Chip,
 } from "@nextui-org/react";
 import Image from "next/image";
-
-// Örnek veri
-const restaurants = [
-  {
-    id: 1,
-    name: "Lezzet Köşesi",
-    image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800",
-    rating: 4.8,
-    cuisine: "Türk Mutfağı",
-    deliveryTime: "30-45",
-    minOrder: 50,
-    tags: ["Kebap", "Pide", "Lahmacun"],
-  },
-  {
-    id: 2,
-    name: "Sushi Master",
-    image: "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?w=800",
-    rating: 4.5,
-    cuisine: "Japon Mutfağı",
-    deliveryTime: "40-55",
-    minOrder: 100,
-    tags: ["Sushi", "Ramen", "Tempura"],
-  },
-  {
-    id: 3,
-    name: "Pizza Roma",
-    image: "https://images.unsplash.com/photo-1579751626657-72bc17010498?w=800",
-    rating: 4.6,
-    cuisine: "İtalyan Mutfağı",
-    deliveryTime: "25-40",
-    minOrder: 60,
-    tags: ["Pizza", "Makarna", "Risotto"],
-  },
-  {
-    id: 4,
-    name: "Burger House",
-    image: "https://images.unsplash.com/photo-1552566626-52f8b828add9?w=800",
-    rating: 4.3,
-    cuisine: "Amerikan Mutfağı",
-    deliveryTime: "20-35",
-    minOrder: 40,
-    tags: ["Burger", "Wings", "Fries"],
-  },
-];
-
-const cuisineTypes = [
-  { value: "all", label: "Tüm Mutfaklar" },
-  { value: "turkish", label: "Türk Mutfağı" },
-  { value: "japanese", label: "Japon Mutfağı" },
-  { value: "italian", label: "İtalyan Mutfağı" },
-  { value: "american", label: "Amerikan Mutfağı" },
-];
-
-const sortOptions = [
-  { value: "rating", label: "Puana Göre" },
-  { value: "deliveryTime", label: "Teslimat Süresine Göre" },
-  { value: "minOrder", label: "Minimum Sipariş Tutarına Göre" },
-];
+import { restaurants, cuisineTypes, sortOptions } from "./data";
+import type { Restaurant } from "./types";
 
 export default function Restaurants() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCuisine, setSelectedCuisine] = useState("all");
   const [selectedSort, setSelectedSort] = useState("rating");
+
+  // Filtreleme ve sıralama mantığı
+  const filteredAndSortedRestaurants = restaurants
+    .filter((restaurant) => {
+      // İsim araması
+      const nameMatch = restaurant.name
+        .toLowerCase()
+        .includes(searchQuery.toLowerCase());
+
+      // Mutfak tipine göre filtreleme
+      const cuisineMatch =
+        selectedCuisine === "all" ||
+        restaurant.cuisine === cuisineTypes.find((c) => c.value === selectedCuisine)?.label;
+
+      return nameMatch && cuisineMatch;
+    })
+    .sort((a, b) => {
+      // Sıralama mantığı
+      switch (selectedSort) {
+        case "rating":
+          return b.rating - a.rating;
+        case "deliveryTime":
+          return (
+            parseInt(a.deliveryTime.split("-")[0]) -
+            parseInt(b.deliveryTime.split("-")[0])
+          );
+        case "minOrder":
+          return a.minOrder - b.minOrder;
+        default:
+          return 0;
+      }
+    });
 
   return (
     <div className="container mx-auto py-8 px-4">
@@ -132,7 +108,7 @@ export default function Restaurants() {
 
       {/* Restaurants Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {restaurants.map((restaurant) => (
+        {filteredAndSortedRestaurants.map((restaurant) => (
           <Card
             key={restaurant.id}
             className="hover:shadow-lg transition-shadow duration-200"
