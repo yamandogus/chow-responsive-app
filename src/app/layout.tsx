@@ -8,6 +8,7 @@ import Navbar from "./components/Navbar";
 import { Footer } from "./components/Footer";
 import { store } from "./store/store";
 import { SessionProvider } from "next-auth/react";
+import { Toaster } from "react-hot-toast";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -41,6 +42,7 @@ export default function RootLayout({
             <Navbar />
             {children}
             <Footer />
+            <Toaster position="top-right" />
           </NextUIProvider>
         </Provider>
       </body>

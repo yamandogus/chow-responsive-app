@@ -1,8 +1,9 @@
 import { addToCart } from "@/app/store/cartSlice";
-import { Button, Card, CardBody, CardHeader, Link } from "@nextui-org/react";
+import { Button, Card, CardBody, CardHeader, Link, Chip } from "@nextui-org/react";
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import { motion } from "framer-motion";
 
 const categories = [
   "Tümü",
@@ -19,6 +20,7 @@ interface FoodItem {
   rating: number;
   image: string;
   price: number;
+  category: string;
 }
 
 const foodItems: FoodItem[] = [
@@ -28,6 +30,7 @@ const foodItems: FoodItem[] = [
     rating: 4.5,
     image: "/category.png",
     price: 180,
+    category: "Öğle"
   },
   {
     id: 2,
@@ -35,6 +38,7 @@ const foodItems: FoodItem[] = [
     rating: 4.5,
     image: "/category.png",
     price: 120,
+    category: "Kahvaltı"
   },
   {
     id: 3,
@@ -42,6 +46,7 @@ const foodItems: FoodItem[] = [
     rating: 4.5,
     image: "/category.png",
     price: 450,
+    category: "Kahvaltı"
   },
   {
     id: 4,
@@ -49,6 +54,7 @@ const foodItems: FoodItem[] = [
     rating: 4.5,
     image: "/category.png",
     price: 220,
+    category: "Akşam"
   },
   {
     id: 5,
@@ -56,6 +62,7 @@ const foodItems: FoodItem[] = [
     rating: 4.5,
     image: "/category.png",
     price: 85,
+    category: "İçecekler"
   },
   {
     id: 6,
@@ -63,68 +70,112 @@ const foodItems: FoodItem[] = [
     rating: 4.5,
     image: "/category.png",
     price: 380,
+    category: "Kahvaltı"
   },
 ];
 
 const Category = () => {
   const dispatch = useDispatch();
+  const [selectedCategory, setSelectedCategory] = useState("Tümü");
+  const [hoveredItem, setHoveredItem] = useState<number | null>(null);
+
+  const filteredItems = selectedCategory === "Tümü"
+    ? foodItems
+    : foodItems.filter(item => item.category === selectedCategory);
+
   return (
-    <div className="bg-[#c9ffbf] py-4 px-4">
+    <div className="bg-gradient-to-b from-[#c9ffbf]/30 to-white py-16 px-4">
       <div className="container mx-auto">
-        <div className="flex align-center justify-between">
-          <div className="grid grid-cols-1 md:grid-cols-2">
-            <div>
-              <h4 className="text-3xl font-bold">Sizin için Basit Yemekler</h4>
-            </div>
-            <div className="flex gap-2 flex-wrap">
-              {categories.map((category) => (
-                <Button
-                  key={category}
-                  className="bg-transparent text-custom border border-custom w-24 font-bold rounded-[20px] py-1"
-                >
-                  {category}
-                </Button>
-              ))}
-            </div>
+        <div className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="text-3xl md:text-4xl font-bold text-gray-800"
+          >
+            Sizin için <span className="text-[#068C52]">Özel</span> Menümüz
+          </motion.h2>
+          
+          <div className="flex gap-2 flex-wrap">
+            {categories.map((category) => (
+              <Button
+                key={category}
+                className={`px-6 py-2 rounded-full font-medium transition-all ${
+                  selectedCategory === category
+                    ? "bg-[#068C52] text-white"
+                    : "bg-white/80 text-gray-700 hover:bg-[#068C52]/10"
+                }`}
+                onPress={() => setSelectedCategory(category)}
+              >
+                {category}
+              </Button>
+            ))}
           </div>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-16 z-5">
-          {foodItems.map((item) => (
-            <Card
+
+        <motion.div 
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-12"
+        >
+          {filteredItems.map((item) => (
+            <motion.div
               key={item.id}
-              className="w-full h-[325px] relative shadow-lg overflow-visible"
+              initial={{ scale: 0.9, opacity: 0 }}
+              whileInView={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.3 }}
             >
-              <CardHeader>
-                <div className="flex align-center justify-between">
-                  <Button className="bg-[#00F076] rounded-full">
-                    <i className="fa-solid fa-star"> {" " + item.rating}</i>
-                  </Button>
-                  <Image
-                    width={250}
-                    height={250}
-                    className="absolute top-[-70px] -right-6 z-10 object-contain"
-                    src={item.image}
-                    alt={item.name}
-                    priority
-                  />
-                </div>
-              </CardHeader>
-              <div></div>
-              <CardBody className="absolute bottom-0 gap-4">
-                <h4 className="text-md font-bold">{item.name}</h4>
-                <div className="flex align-center justify-between w-full">
-                  <span className="text-lg font-bold">{item.price} ₺</span>
-                  <div>
+              <Card
+                className="w-full bg-white/80 backdrop-blur-sm hover:shadow-xl transition-all duration-300"
+                onMouseEnter={() => setHoveredItem(item.id)}
+                onMouseLeave={() => setHoveredItem(null)}
+              >
+                <CardHeader className="pt-8 px-6">
+                  <div className="flex items-start justify-between w-full">
+                    <div className="flex flex-col gap-1">
+                      <Chip
+                        className="bg-yellow-400/10 text-yellow-700 font-medium"
+                        startContent={<span className="text-yellow-400">★</span>}
+                      >
+                        {item.rating}
+                      </Chip>
+                      <Chip
+                        className="bg-[#068C52]/10 text-[#068C52]"
+                        size="sm"
+                      >
+                        {item.category}
+                      </Chip>
+                    </div>
+                    <motion.div
+                      animate={{
+                        scale: hoveredItem === item.id ? 1.1 : 1,
+                        y: hoveredItem === item.id ? -10 : 0
+                      }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <Image
+                        width={200}
+                        height={200}
+                        className="object-contain"
+                        src={item.image}
+                        alt={item.name}
+                        priority
+                      />
+                    </motion.div>
+                  </div>
+                </CardHeader>
+
+                <CardBody className="px-6 pb-6">
+                  <h3 className="text-xl font-semibold text-gray-800 mb-4">{item.name}</h3>
+                  <div className="flex items-center justify-between">
+                    <p className="text-2xl font-bold text-[#068C52]">{item.price} ₺</p>
                     <Button
-                      className="bg-[#00F076] rounded-full z-20 relative"
+                      className="bg-[#00F076] text-white font-medium hover:bg-[#00d566] transition-colors"
+                      radius="full"
                       onPress={() => {
                         dispatch(addToCart({
                           ...item,
-                          id: item.id,
-                          name: item.name,
-                          price: item.price,
-                          rating: item.rating,
-                          image: item.image,
                           quantity: 1,
                         }));
                       }}
@@ -132,21 +183,27 @@ const Category = () => {
                       Sepete Ekle
                     </Button>
                   </div>
-                </div>
-              </CardBody>
-            </Card>
+                </CardBody>
+              </Card>
+            </motion.div>
           ))}
-        </div>
-      </div>
-      <div className="flex align-center justify-center my-16">
-        <Button
-          className="bg-[#068C52] text-white font-bold rounded-full"
-          content="Menüyü Keşfet"
-          href="/menu"
-          as={Link}
+        </motion.div>
+
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="flex justify-center mt-16"
         >
-          Menüyü Keşfet
-        </Button>
+          <Button
+            className="bg-[#068C52] text-white font-bold px-8 py-6 text-lg hover:bg-[#056b3e] transition-colors"
+            radius="full"
+            href="/menu"
+            as={Link}
+          >
+            Tüm Menüyü Keşfet
+          </Button>
+        </motion.div>
       </div>
     </div>
   );

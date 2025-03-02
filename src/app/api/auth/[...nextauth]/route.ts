@@ -7,7 +7,7 @@ if (!process.env.NEXTAUTH_SECRET) {
   throw new Error('NEXTAUTH_SECRET is not set in environment variables');
 }
 
-const authOptions: NextAuthOptions = {
+export const authOptions: NextAuthOptions = {
   providers: [
     CredentialsProvider({
       name: "Credentials",
@@ -31,7 +31,8 @@ const authOptions: NextAuthOptions = {
             throw new Error('Geçersiz şifre');
           }
 
-          const { password, ...userWithoutPass } = user;
+          // Destructure to omit password
+          const { password: _, ...userWithoutPass } = user;
           return userWithoutPass as User;
         } catch (error) {
           console.error('Giriş hatası:', error);
@@ -51,19 +52,23 @@ const authOptions: NextAuthOptions = {
     maxAge: 30 * 24 * 60 * 60, // 30 days
   },
   callbacks: {
-    async jwt({ token, user }) {
+    async jwt({ token, user, trigger, session }) {
       if (user) {
         token.id = user.id;
         token.name = user.name;
         token.email = user.email;
       }
+      // Handle user update
+      if (trigger === "update" && session) {
+        token = { ...token, ...session };
+      }
       return token;
     },
     async session({ session, token }) {
       if (session.user) {
-        session.user.id = token.id;
-        session.user.name = token.name;
-        session.user.email = token.email;
+        session.user.id = token.id as string;
+        session.user.name = token.name as string;
+        session.user.email = token.email as string;
       }
       return session;
     },

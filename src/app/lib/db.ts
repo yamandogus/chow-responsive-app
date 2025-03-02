@@ -38,7 +38,7 @@ const saveUsers = (users: User[]): boolean => {
 };
 
 // Kullanıcıları yükle
-let users: User[] = loadUsers();
+const users: User[] = loadUsers();
 
 export const db = {
   users: {
@@ -56,7 +56,7 @@ export const db = {
           throw new Error('Kullanıcı kaydedilemedi');
         }
         
-        const { password, ...userWithoutPass } = user;
+        const { password: _, ...userWithoutPass } = user;
         return userWithoutPass;
       } catch (error) {
         console.error('Kullanıcı oluşturma hatası:', error);
@@ -73,7 +73,10 @@ export const db = {
     },
     getAll: async () => {
       try {
-        return users.map(({ password, ...user }) => user);
+        return users.map(user => {
+          const { password: _, ...userWithoutPass } = user;
+          return userWithoutPass;
+        });
       } catch (error) {
         console.error('Kullanıcıları getirme hatası:', error);
         return [];

@@ -22,8 +22,12 @@ const Register = () => {
       if (result?.error) {
         setError("E-posta veya şifre hatalı");
       }
-    } catch (error) {
-      setError("Giriş işlemi başarısız oldu");
+    } catch (err) {
+      if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError("Giriş işlemi başarısız oldu");
+      }
     }
   };
 
@@ -54,9 +58,9 @@ const Register = () => {
         password: formData.get("password"),
         redirect: false,
       });
-    } catch (error) {
-      if (error instanceof Error) {
-        setError(error.message);
+    } catch (err) {
+      if (err instanceof Error) {
+        setError(err.message);
       } else {
         setError("Kayıt işlemi başarısız oldu");
       }

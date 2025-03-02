@@ -2,9 +2,12 @@
 import { Card, CardBody, Tab, Tabs } from "@nextui-org/react";
 import React, { useState } from "react";
 import { signIn } from "next-auth/react";
+import { toast } from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
 const Login = () => {
   const [error, setError] = useState<string>("");
+  const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -15,15 +18,23 @@ const Login = () => {
       const result = await signIn("credentials", {
         email: formData.get("email"),
         password: formData.get("password"),
-        redirect: true,
-        callbackUrl:"/"
+        redirect: false
       });
       
       if (result?.error) {
         setError("E-posta veya şifre hatalı");
+      } else {
+        toast.success("Başarıyla giriş yapıldı!");
+        setTimeout(() => {
+          router.push("/");
+        }, 2000);
       }
-    } catch (error) {
-      setError("Giriş işlemi başarısız oldu");
+    } catch (err) {
+      if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError("Giriş işlemi başarısız oldu");
+      }
     }
   };
 
@@ -49,15 +60,23 @@ const Login = () => {
         const data = await response.json();
         throw new Error(data.error || "Kayıt işlemi başarısız oldu");
       }
-      await signIn("credentials", {
+
+      toast.success("Başarıyla kayıt oldunuz!");
+      
+      const result = await signIn("credentials", {
         email: formData.get("email"),
         password: formData.get("password"),
-        redirect: true,
-        callbackUrl: "/",
+        redirect: false
       });
-    } catch (error) {
-      if (error instanceof Error) {
-        setError(error.message);
+
+      if (!result?.error) {
+        setTimeout(() => {
+          router.push("/");
+        }, 2000);
+      }
+    } catch (err) {
+      if (err instanceof Error) {
+        setError(err.message);
       } else {
         setError("Kayıt işlemi başarısız oldu");
       }

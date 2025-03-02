@@ -1,0 +1,46 @@
+[
+  {
+    "userId": "1740923662575",
+    "items": [
+      {
+        "productId": 2,
+        "name": "Bagel Breakfast",
+        "quantity": 1,
+        "price": 120
+      }
+    ],
+    "totalAmount": 120,
+    "status": "beklemede",
+    "address": "asdfasdf",
+    "id": "1740924290330",
+    "createdAt": "2025-03-02T14:04:50.330Z"
+  },
+  {
+    "userId": "1740923662575",
+    "items": [
+      {
+        "productId": 3,
+        "name": "Full English Breakfast",
+        "quantity": 1,
+        "price": 450
+      },
+      {
+        "productId": 5,
+        "name": "Iced Coffee",
+        "quantity": 1,
+        "price": 85
+      },
+      {
+        "productId": 4,
+        "name": "Italian Meatballs",
+        "quantity": 1,
+        "price": 220
+      }
+    ],
+    "totalAmount": 755,
+    "status": "beklemede",
+    "address": "vsdvsd",
+    "id": "1740926763850",
+    "createdAt": "2025-03-02T14:46:03.850Z"
+  }
+]

@@ -81,6 +81,11 @@ export default function Navbar() {
 
   const itemsLogin: NavMenuItem[] = [
     {
+      key: "orders",
+      name: "Siparişlerim",
+      href: "/orders"
+    },
+    {
       key: "account",
       name: "Hesabım",
       href: "/account"
@@ -131,7 +136,7 @@ export default function Navbar() {
               >
                 {session?.user?.name ? (
                   <span className="text-sm font-medium capitalize px-2 truncate max-w-[120px]">
-                    {session.user.name}
+                    {session.user.name.split(' ')[0]}
                   </span>
                 ) : (
                   <i className="fa-solid fa-user text-lg"></i>
