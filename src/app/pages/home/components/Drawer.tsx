@@ -76,6 +76,7 @@ const BasketBody = ({ items, onClose }: BasketBodyProps) => {
         onClose();
         router.push("/orders");
       }, 2000);
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
       toast.error("Sipariş oluşturulurken bir hata oluştu");
     } finally {

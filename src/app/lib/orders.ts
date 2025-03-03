@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 
-export type OrderStatus = 'beklemede' | 'hazırlanıyor' | 'yolda' | 'teslim_edildi';
+export type OrderStatus = 'pending' | 'processing' | 'completed';
 
 export interface OrderItem {
   productId: string;
@@ -11,13 +11,18 @@ export interface OrderItem {
 }
 
 export interface Order {
-  id: string;
-  userId: string;
-  items: OrderItem[];
+  id: number;
+  userId: number;
+  items: Array<{
+    productId: number;
+    name: string;
+    quantity: number;
+    price: number;
+  }>;
   totalAmount: number;
-  status: OrderStatus;
-  createdAt: string;
   address: string;
+  status: 'pending' | 'processing' | 'completed';
+  createdAt: Date;
 }
 
 const ORDERS_FILE = path.join(process.cwd(), 'orders.json');
@@ -57,8 +62,8 @@ export const ordersDb = {
     try {
       const order: Order = {
         ...data,
-        id: Date.now().toString(),
-        createdAt: new Date().toISOString(),
+        id: Date.now(),
+        createdAt: new Date(),
       };
       
       orders.push(order);
@@ -75,7 +80,7 @@ export const ordersDb = {
   },
 
   // Kullanıcının siparişlerini getir
-  getUserOrders: async (userId: string) => {
+  getUserOrders: async (userId: number) => {
     try {
       return orders.filter(order => order.userId === userId);
     } catch (error) {
@@ -85,7 +90,7 @@ export const ordersDb = {
   },
 
   // Sipariş durumunu güncelle
-  updateStatus: async (orderId: string, status: OrderStatus) => {
+  updateStatus: async (orderId: number, status: OrderStatus) => {
     try {
       const orderIndex = orders.findIndex(order => order.id === orderId);
       if (orderIndex === -1) {
@@ -105,3 +110,21 @@ export const ordersDb = {
     }
   }
 };
+
+export async function getOrders(): Promise<Order[]> {
+  return orders;
+}
+
+export async function createOrder(): Promise<Order> {
+  const order: Order = {
+    id: Date.now(),
+    userId: 1, // Default user ID
+    items: [],
+    totalAmount: 0,
+    address: '',
+    status: 'pending',
+    createdAt: new Date()
+  };
+  orders.push(order);
+  return order;
+}

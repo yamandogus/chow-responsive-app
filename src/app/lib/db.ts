@@ -29,7 +29,7 @@ export const db = {
         users.push(user);
         await fs.writeFile(usersFilePath, JSON.stringify(users, null, 2));
         return user;
-      } catch (error) {
+      } catch {
         throw new Error('Failed to create user');
       }
     },
