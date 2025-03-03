@@ -11,7 +11,6 @@ import {
 } from "@nextui-org/react";
 import Image from "next/image";
 import { restaurants, cuisineTypes, sortOptions } from "./data";
-import type { Restaurant as RestaurantType } from "./types";
 
 export default function Restaurants() {
   const [searchQuery, setSearchQuery] = useState("");

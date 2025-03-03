@@ -4,7 +4,6 @@ import {
   DrawerBody,
   DrawerFooter,
   Button,
-  Input,
   Textarea,
 } from "@nextui-org/react";
 import React, { useState } from "react";
