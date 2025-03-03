@@ -5,10 +5,10 @@ import "./globals.css";
 import { Provider } from "react-redux";
 import { NextUIProvider } from "@nextui-org/react";
 import Navbar from "./components/Navbar";
-import { Footer } from "./components/Footer";
 import { store } from "./store/store";
 import { SessionProvider } from "next-auth/react";
 import { Toaster } from "react-hot-toast";
+import Footer from "./components/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -40,7 +40,9 @@ export default function RootLayout({
         <Provider store={store}>
           <NextUIProvider>
             <Navbar />
-            {children}
+            <div className="min-h-screen">
+              {children}
+            </div>
             <Footer />
             <Toaster position="top-right" />
           </NextUIProvider>
