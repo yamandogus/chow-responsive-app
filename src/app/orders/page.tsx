@@ -7,17 +7,15 @@ import { useRouter } from "next/navigation";
 import type { Order } from "../lib/orders";
 
 const statusColors = {
-  beklemede: "warning",
-  hazırlanıyor: "primary",
-  yolda: "secondary",
-  teslim_edildi: "success",
+  pending: "warning",
+  processing: "primary",
+  completed: "success",
 } as const;
 
 const statusTexts = {
-  beklemede: "Beklemede",
-  hazırlanıyor: "Hazırlanıyor",
-  yolda: "Yolda",
-  teslim_edildi: "Teslim Edildi",
+  pending: "Beklemede",
+  processing: "Hazırlanıyor",
+  completed: "Tamamlandı",
 } as const;
 
 export default function OrdersPage() {

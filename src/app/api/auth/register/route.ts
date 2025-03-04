@@ -15,7 +15,9 @@ export async function POST(request: Request) {
       );
     }
 
+    const userCount = await db.users.count();
     const user = await db.users.create({
+      id: userCount + 1,
       name,
       email,
       password,
