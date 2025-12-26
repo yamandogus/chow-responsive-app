@@ -1,25 +1,40 @@
 # 🍽️ Chow Responsive App
 
-Chow Responsive App, **Next.js**, **TypeScript** ve **Tailwind CSS** kullanılarak geliştirilmiş, tamamen duyarlı (responsive) bir restoran/menü uygulamasıdır. Modern web uygulama deneyimi sunmak üzere tasarlanmıştır ve kolayca özelleştirilebilir bir yapıya sahiptir.
+**Chow Responsive App**, restoran ve menüleri listeleyen, kullanıcı dostu ve tamamen duyarlı (responsive) bir web uygulamasıdır. Proje, **Next.js**, **TypeScript**, ve **Tailwind CSS** kullanılarak geliştirilmiştir ve modern web uygulama deneyimi sunmayı hedefler.
 
-Canlı demo: https://chow-responsive-app.vercel.app/ :contentReference[oaicite:1]{index=1}
-
----
-
-## 🚀 Özellikler
-
-- 📱 Duyarlı tasarım – mobil ve masaüstü uyumlu
-- 📍 Restoran listesi ve detay sayfaları
-- 🗂️ Kategori bazlı menü filtreleme
-- 🧠 TypeScript ile tip güvenliği
-- 🎨 Tailwind CSS ile hızlı stil geliştirme
-- ⚡ Next.js’in sunduğu performans avantajları
+Canlı demo: [chow-responsive-app.vercel.app](https://chow-responsive-app.vercel.app/)  
+Repo: [GitHub](https://github.com/yamandogus/chow-responsive-app)
 
 ---
 
-## 🛠️ Başlarken
+## 🚀 Proje Hakkında
 
-Aşağıdaki adımları takip ederek projeyi yerel makinenizde çalıştırabilirsiniz:
+Bu uygulama, kullanıcıların restoranları görüntülemesine, menüleri filtrelemesine ve detay sayfalarında bilgi almasına olanak sağlar.  
+
+Öne çıkan özellikler:
+
+- 📱 Mobil ve masaüstü için tamamen responsive tasarım
+- 🍔 Restoran ve menü listeleri
+- 🔍 Kategori ve filtreleme özelliği
+- 🖼️ Modern ve temiz UI
+- ⚡ Next.js ve React ile hızlı frontend
+- 🎨 Tailwind CSS ile kolay özelleştirilebilir stil
+
+---
+
+## 🛠️ Kullanılan Teknolojiler
+
+| Teknoloji | Kullanım |
+|-----------|----------|
+| Next.js | React tabanlı framework, sayfa yönetimi |
+| React | UI geliştirme |
+| TypeScript | Tip güvenliği ve kod kalitesi |
+| Tailwind CSS | Modern, hızlı ve responsive CSS geliştirme |
+| Vercel | Deployment (opsiyonel) |
+| NPM / PNPM / Yarn | Paket yönetimi |
+
+---
+## 🛠️ Kurulum ve Çalıştırma
 
 ### Gereksinimler
 
@@ -41,3 +56,10 @@ npm install
 yarn install
 # veya
 pnpm install
+
+Geliştirme Sunucusu
+npm run dev
+# veya
+yarn dev
+# veya
+pnpm dev
